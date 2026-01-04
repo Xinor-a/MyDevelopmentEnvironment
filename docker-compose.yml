@@ -1,0 +1,13 @@
+services:
+  dev_cont:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: my_devcontainer
+    volumes:
+      - ./projects/:/root/developer/projects
+      - my_configuration:/usr/local/config
+    tty: true
+
+volumes:
+  my_configuration:
