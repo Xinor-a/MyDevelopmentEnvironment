@@ -25,7 +25,7 @@ if ! apt-get install -y nodejs npm; then
     log_error "Failed to install Node.js and npm"
     exit 1
 fi
-npm install -g tree-sitter-cli
+npm install -g tree-sitter-cli@0.25.10
 
 # move to /usr/local/config/nvim
 mkdir -p /usr/local/config/nvim
