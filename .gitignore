@@ -1,4 +1,4 @@
 *.git/
 
-config/projects/*
-!config/projects/README.md
+scripts/projects/*
+!scripts/projects/README.md

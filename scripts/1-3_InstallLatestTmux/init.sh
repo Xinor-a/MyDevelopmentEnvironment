@@ -20,7 +20,6 @@ if ! grep -q "export LC_COLLATE=C" /etc/bash.bashrc; then
     log_info "Created alias 'export LC_COLLATE=C' for Starship prompt on 'tmux'"
 fi
 
-cp tmux.conf /usr/local/config/tmux/tmux.conf
-
+chmod 766 /etc/devenv/tmux/tmux.conf
 mkdir -p /root/.config/tmux/
-ln -sf /usr/local/config/tmux/tmux.conf /root/.config/tmux/tmux.conf
+ln -sf /etc/devenv/tmux/tmux.conf /root/.config/tmux/tmux.conf

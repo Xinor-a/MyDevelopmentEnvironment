@@ -130,9 +130,6 @@ log_info "Cleaning up unnecessary packages..."
 apt-get autoremove -y
 apt-get clean
 
-# Create directory for shared configurations
-mkdir -p /usr/local/config
-
 # Install additional tools
 log_info "Installing additional tools..."
 

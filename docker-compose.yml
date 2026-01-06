@@ -5,9 +5,13 @@ services:
       dockerfile: dockerfile
     container_name: my_devcontainer
     volumes:
-      - ./projects/:/root/developer/projects
-      - my_configuration:/usr/local/config
+      - ./projects/:/root/projects
+      - devenv:/etc/devenv
+      - nvim-plugin:/root/.local/share/nvim
+      - nvim-cache:/root/.cache/nvim
     tty: true
 
 volumes:
-  my_configuration:
+  devenv:
+  nvim-plugin:
+  nvim-cache:

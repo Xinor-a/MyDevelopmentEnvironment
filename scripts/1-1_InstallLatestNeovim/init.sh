@@ -27,23 +27,9 @@ if ! apt-get install -y nodejs npm; then
 fi
 npm install -g tree-sitter-cli@0.25.10
 
-# move to /usr/local/config/nvim
-mkdir -p /usr/local/config/nvim
-
-# copy all files from MyNeovimSetting/ to /usr/local/config/nvim
-if ! cp -r MyNeovimSetting/* /usr/local/config/nvim; then
-    log_error "Failed to copy Neovim settings"
-    exit 1
-fi
-
-# change permissions for all moved files
-if ! chmod -R 777 /usr/local/config/nvim; then
-    log_error "Failed to set permissions for /usr/local/config/nvim"
-    exit 1
-fi
-
 mkdir -p /root/.config/
-ln -sf /usr/local/config/nvim /root/.config/
+chmod -R 777 /etc/devenv/nvim
+ln -sf /etc/devenv/nvim /root/.config/
 
 # set path for nvim config in bash.bashrc
 mv /opt/nvim-linux-$ARCH /opt/nvim
