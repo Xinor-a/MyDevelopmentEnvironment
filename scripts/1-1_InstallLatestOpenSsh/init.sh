@@ -9,8 +9,6 @@ chmod 755 /etc/ssh/
 
 log_info "Configuring SSH server..."
 mkdir -p /var/run/sshd
-mkdir -p /root/.ssh
-chmod 700 /root/.ssh
 
 # Generate SSH host keys if they don't exist
 if [ ! -f /etc/ssh/ssh_host_rsa_key ] || \
