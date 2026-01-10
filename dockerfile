@@ -5,13 +5,16 @@ RUN apt-get update \
     && apt-get install -y \
         sudo
 
+# Set timezone to Asia/Tokyo
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
+# Copy initialization scripts and set permissions
 RUN mkdir -p /tmp/scripts
 COPY scripts /tmp/scripts
 RUN chmod 777 /tmp/scripts/init.sh
 
+# Create necessary directories for the volume mount (devenv)
 RUN mkdir -p /etc/devenv/
 RUN chmod 777 /etc/devenv/
 
@@ -25,9 +28,11 @@ RUN echo 'root:password' | chpasswd
 # Expose SSH port
 EXPOSE 22
 
+# Copy entrypoint script and set permissions
 COPY scripts/entrypoint.sh /etc/entrypoint.sh
 RUN chmod +x /etc/entrypoint.sh
 
+# Initialize log directory and run initialization script
 RUN mkdir -p /var/log && chmod 777 /var/log
 RUN /tmp/scripts/init.sh 2>&1 | tee /var/log/init.log
 
